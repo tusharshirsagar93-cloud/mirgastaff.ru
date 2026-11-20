@@ -1093,6 +1093,7 @@ connectJobsStream();
 
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js';
+import { getAuth } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
 import { getFirestore, collection, query, orderBy, onSnapshot, getDocs } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js';
 const firebaseConfig = {
   apiKey: "AIzaSyDDy_MrCLzwr2k9XCEP75Ja9SLAxEW_4Gk",
@@ -1104,6 +1105,7 @@ const firebaseConfig = {
   firestoreDatabaseId: "(default)"
 };
 const app = initializeApp(firebaseConfig);
+try { getAuth(app); } catch (_) {}
 const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
 function mapSnap(snap) {
   return snap.docs.map(d => {
