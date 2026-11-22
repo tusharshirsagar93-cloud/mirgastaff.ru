@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mirgastaffru.vercel.app/sitemap.xml

@@ -505,6 +505,8 @@
     .hamburger span { width: 17px; }
   }
 </style>
+<link rel="canonical" href="https://mirgastaffru.vercel.app/jobs.html" />
+<meta name="robots" content="index, follow" />
 </head>
 <body>
 
@@ -900,7 +902,7 @@ function renderJobs() {
           <div class="job-sal">${escapeHtml(sal)}</div>
         </div>
         <div class="job-card-foot">
-          <a href="${dest}" class="job-apply-btn js-idx-link">${escapeHtml(t('apply_btn'))}</a>
+          ${window.__MS_JOB_USER ? (window.__MS_APPLIED_IDS && window.__MS_APPLIED_IDS.has(j.id) ? `<button type="button" class="job-apply-btn" disabled style="background:#059669;cursor:default">${curLang==='ru'?'✓ Отклик отправлен':'✓ Applied'}</button>` : `<button type="button" class="job-apply-btn" onclick="window.__msApplyJob && window.__msApplyJob('${escapeHtml(j.id)}', this)">${escapeHtml(t('apply_btn'))}</button>`) : `<a href="${dest}" class="job-apply-btn js-idx-link">${escapeHtml(t('apply_btn'))}</a>`}
         </div>
       </article>`;
   }).join('');
@@ -1093,8 +1095,8 @@ connectJobsStream();
 
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js';
-import { getAuth } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
-import { getFirestore, collection, query, orderBy, onSnapshot, getDocs } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js';
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
+import { getFirestore, collection, query, orderBy, onSnapshot, getDocs, addDoc, doc, getDoc, where, serverTimestamp } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js';
 const firebaseConfig = {
   apiKey: "AIzaSyDDy_MrCLzwr2k9XCEP75Ja9SLAxEW_4Gk",
   authDomain: "primal-future-wf900.firebaseapp.com",
@@ -1105,7 +1107,8 @@ const firebaseConfig = {
   firestoreDatabaseId: "ai-studio-2f4979af-3a7e-4055-b7fd-1742b177dd78"
 };
 const app = initializeApp(firebaseConfig);
-try { getAuth(app); } catch (_) {}
+let auth = null;
+try { auth = getAuth(app); } catch (_) {}
 const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
 function mapSnap(snap) {
   return snap.docs.map(d => {
@@ -1130,6 +1133,62 @@ try {
 } catch (_) {
   setJobsState([]);
 }
+window.__MS_JOB_USER = null;
+window.__MS_APPLIED_IDS = new Set();
+let unsubApps = null;
+if (auth) {
+  onAuthStateChanged(auth, async (u) => {
+    window.__MS_JOB_USER = u || null;
+    if (unsubApps) { unsubApps(); unsubApps = null; }
+    window.__MS_APPLIED_IDS = new Set();
+    if (u) {
+      try {
+        const qa = query(collection(db, 'applications'), where('candidateUid', '==', u.uid));
+        unsubApps = onSnapshot(qa, snap => {
+          window.__MS_APPLIED_IDS = new Set(snap.docs.map(d => d.data()?.jobId).filter(Boolean));
+          renderJobs();
+        }, () => renderJobs());
+      } catch (_) {}
+    }
+    renderJobs();
+  });
+}
+window.__msApplyJob = async function(jobId, btn) {
+  const u = window.__MS_JOB_USER;
+  if (!u) { window.location.href = getApplyDestination(); return; }
+  const job = jobsList.find(x => x.id === jobId);
+  if (!job) return;
+  if (btn) { btn.disabled = true; btn.textContent = curLang === 'ru' ? '⏳ ...' : '⏳ Applying...'; }
+  try {
+    let candName = u.displayName || u.email || 'Candidate';
+    try {
+      const cs = await getDoc(doc(db, 'candidates', u.uid));
+      if (cs.exists()) {
+        const cd = cs.data() || {};
+        candName = cd.fullName || ((cd.surname || '') + ' ' + (cd.firstName || '')).trim() || candName;
+      }
+    } catch (_) {}
+    await addDoc(collection(db, 'applications'), {
+      jobId: job.id,
+      jobTitle: job.title || '',
+      jobTitleRu: job.titleRu || job.title || '',
+      location: job.location || '',
+      salary: job.salary || '',
+      employerUid: job.employerUid || '',
+      companyName: job.companyName || 'MigraStaff Direct',
+      candidateUid: u.uid,
+      candidateName: candName,
+      candidateEmail: u.email || '',
+      status: 'pending',
+      createdAt: serverTimestamp()
+    });
+    window.__MS_APPLIED_IDS.add(jobId);
+    renderJobs();
+  } catch (err) {
+    if (btn) { btn.disabled = false; btn.textContent = t('apply_btn'); }
+    alert(curLang === 'ru' ? 'Не удалось отправить отклик. Проверьте профиль.' : 'Could not submit application. Please try again.');
+  }
+};
 </script>
 </body>
 </html>
