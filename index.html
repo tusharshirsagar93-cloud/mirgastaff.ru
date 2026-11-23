@@ -3532,7 +3532,7 @@ import{initializeApp as vt}from"https://www.gstatic.com/firebasejs/11.6.0/fireba
         <div class="av" style="background:${Lt(s.uid)};overflow:hidden">${s.photoDataUrl?`<img loading="lazy" decoding="async" src="${a(s.photoDataUrl)}" alt="" style="width:100%;height:100%;object-fit:cover;display:block" />`:a(W(l))}</div>
         <div class="ci">
           <div class="cn">${a(l)}</div>
-          <div class="cs">${a(s.profession||"\u2014")} \xB7 ${a(s.countryName||s.countryCode||"\u2014")}</div>
+          <div class="cs">${a(ruVal(s.profession||"\u2014"))} \xB7 ${a(ruVal(s.countryName||s.countryCode||"\u2014"))}</div>
         </div>
         <span class="cb${s.verified?" ver":""}">${s.verified?"\u2705":"\u23F3"}</span>
       </div>`}).join(""),e.querySelectorAll(".cand-row[data-cand-uid]").forEach(s=>{s.addEventListener("click",()=>{let l=s.dataset.candUid;l&&Tt(l)})})}function rt(){let e=o("dirChatBody");if(!e)return;if(!F.length){e.innerHTML=`<div class="chat-empty">${a(n("chat_empty_dir"))}</div>`;return}let t=x();e.innerHTML=F.map(i=>{let r=i.sender==="director",d=r?i.textOrig:t==="ru"?i.textRu||i.textOrig:i.textEn||i.textOrig,s=r?i.textEn&&i.textEn!==i.textOrig?`\u{1F1EC}\u{1F1E7} ${i.textEn}`:"":i.textOrig&&i.textOrig!==d?i.textOrig:"",l=ft(i.createdAt);return`<div class="bubble ${r?"me":"them"}">
@@ -3651,7 +3651,17 @@ const RU_VAL_MAP = {
   "Moscow": "Москва",
   "India": "Индия",
   "Uzbekistan": "Узбекистан",
-  "Test Moscow Logistics": "Тест Москва Логистика"
+  "Test Moscow Logistics": "Тест Москва Логистика",
+  "Car Mechanic": "Автомеханик", "Plumber": "Водопроводчик",
+  "Cook": "Повар", "Driver": "Водитель", "Nurse": "Медсестра / Медбрат",
+  "Mason": "Каменщик", "Housekeeper": "Горничная", "Mechanic": "Механик",
+  "IT Support": "IT-поддержка", "Farmer": "Фермер",
+  "Tajikistan": "Таджикистан", "Kyrgyzstan": "Кыргызстан",
+  "Bangladesh": "Бангладеш", "Pakistan": "Пакистан", "Nepal": "Непал",
+  "Vietnam": "Вьетнам", "Philippines": "Филиппины", "Kazakhstan": "Казахстан",
+  "Armenia": "Армения", "Serbia": "Сербия", "Turkey": "Турция", "China": "Китай",
+  "Kazan": "Казань", "Saint Petersburg": "Санкт-Петербург",
+  "Penza": "Пенза", "Magnitogorsk": "Магнитогорск"
 };
 function ruVal(v){
   if(!v) return "";
