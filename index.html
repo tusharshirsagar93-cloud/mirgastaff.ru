@@ -3642,6 +3642,25 @@ function renderEmpPortal(){
   }
 }
 
+const RU_VAL_MAP = {
+  "Electrician": "Электрик",
+  "Warehouse Worker": "Работник склада",
+  "Warehouse Workers": "Работники склада",
+  "Welder": "Сварщик",
+  "Construction Worker": "Строительный рабочий",
+  "Moscow": "Москва",
+  "India": "Индия",
+  "Uzbekistan": "Узбекистан",
+  "Test Moscow Logistics": "Тест Москва Логистика"
+};
+function ruVal(v){
+  if(!v) return "";
+  const str = String(v).trim();
+  const isRu = (typeof curLang !== "undefined" && curLang === "ru") || (typeof x === "function" && x() === "ru");
+  if(!isRu) return str;
+  return RU_VAL_MAP[str] || RU_VAL_MAP[str.toLowerCase()] || str;
+}
+
 function renderDirAdmin(){
   const ab=o("dirJobAppsBody");
   if(ab){
