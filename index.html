@@ -888,34 +888,34 @@ footer ul a:hover .fic{color:#60a5fa}
             <h3 style="margin:0" data-i18n="emp_portal_t">🏢 Employer Portal — Post &amp; Manage Jobs</h3>
             <p style="margin:4px 0 0;font-size:13px;color:var(--muted)" data-i18n="emp_portal_d">Sign in or register your company. Once approved by the Director, your jobs publish live to the website &amp; Android app.</p>
           </div>
-          <button type="button" id="empLogoutBtn" class="btn btn-g" style="display:none;padding:7px 14px;font-size:12.5px" onclick="window.MS_AUTH && window.MS_AUTH.empLogout()">Log Out</button>
+          <button type="button" id="empLogoutBtn" class="btn btn-g" style="display:none;padding:7px 14px;font-size:12.5px" onclick="window.MS_AUTH && window.MS_AUTH.empLogout()" data-i18n="emp_logout">Log Out</button>
         </div>
         <div class="form-error" id="empPortalErr" style="margin-bottom:12px"></div>
         <div id="empAuthPanel">
           <div class="dir-job-grid">
-            <div class="field"><label>Company Name</label><input id="empRegCompany" type="text" placeholder="e.g. Volga Logistics LLC" /></div>
-            <div class="field"><label>City (Russia)</label><input id="empRegCity" type="text" placeholder="e.g. Moscow / Kazan" /></div>
-            <div class="field"><label>Work Email</label><input id="empAuthEmail" type="email" placeholder="hr@company.ru" /></div>
+            <div class="field"><label data-i18n="emp_comp_l">Company Name</label><input id="empRegCompany" type="text" placeholder="e.g. Volga Logistics LLC" /></div>
+            <div class="field"><label data-i18n="emp_city_l">City (Russia)</label><input id="empRegCity" type="text" placeholder="e.g. Moscow / Kazan" /></div>
+            <div class="field"><label data-i18n="emp_email_l">Work Email</label><input id="empAuthEmail" type="email" placeholder="hr@company.ru" /></div>
           </div>
-          <div class="field" style="max-width:340px;margin-bottom:14px"><label>Password (min 6 chars)</label><input id="empAuthPass" type="password" placeholder="••••••" /></div>
+          <div class="field" style="max-width:340px;margin-bottom:14px"><label data-i18n="emp_pass_l">Password (min 6 chars)</label><input id="empAuthPass" type="password" placeholder="••••••" /></div>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button type="button" id="empSignInBtn" class="btn btn-p" onclick="window.MS_AUTH && window.MS_AUTH.empAuth('signin')">Employer Sign In</button>
-            <button type="button" id="empRegisterBtn" class="btn btn-g" onclick="window.MS_AUTH && window.MS_AUTH.empAuth('signup')">Register Company</button>
+            <button type="button" id="empSignInBtn" class="btn btn-p" onclick="window.MS_AUTH && window.MS_AUTH.empAuth('signin')" data-i18n="emp_signin_b">Employer Sign In</button>
+            <button type="button" id="empRegisterBtn" class="btn btn-g" onclick="window.MS_AUTH && window.MS_AUTH.empAuth('signup')" data-i18n="emp_reg_b">Register Company</button>
           </div>
         </div>
         <div id="empDashPanel" style="display:none">
           <div id="empStatusBanner" style="padding:10px 14px;border-radius:10px;font-size:13.5px;font-weight:600;margin-bottom:16px"></div>
           <form id="empPostJobForm" style="display:none;margin-bottom:18px" novalidate>
             <div class="dir-job-grid">
-              <div class="field"><label>Job Title</label><input id="empJobTitle" type="text" placeholder="e.g. Welder / Driver" required /></div>
-              <div class="field"><label>City / Location</label><input id="empJobLoc" type="text" placeholder="e.g. Moscow" required /></div>
-              <div class="field"><label>Monthly Salary</label><input id="empJobSal" type="text" placeholder="e.g. 90,000 RUB" required /></div>
+              <div class="field"><label data-i18n="emp_jtitle_l">Job Title</label><input id="empJobTitle" type="text" placeholder="e.g. Welder / Driver" required /></div>
+              <div class="field"><label data-i18n="th_loc">City / Location</label><input id="empJobLoc" type="text" placeholder="e.g. Moscow" required /></div>
+              <div class="field"><label data-i18n="emp_jsal_l">Monthly Salary</label><input id="empJobSal" type="text" placeholder="e.g. 90,000 RUB" required /></div>
             </div>
-            <button type="submit" id="empJobSubmitBtn" class="btn btn-p" style="padding:10px 20px;font-size:13.5px">Publish Job Live →</button>
+            <button type="submit" id="empJobSubmitBtn" class="btn btn-p" style="padding:10px 20px;font-size:13.5px" data-i18n="emp_pub_b">Publish Job Live →</button>
           </form>
           <div class="dir-table-wrap">
             <table class="dir-table">
-              <thead><tr><th>My Posted Jobs</th><th>Location</th><th>Salary</th><th>Action</th></tr></thead>
+              <thead><tr><th data-i18n="emp_myjobs_th">My Posted Jobs</th><th data-i18n="th_loc">Location</th><th data-i18n="emp_sal_th">Salary</th><th data-i18n="th_act">Action</th></tr></thead>
               <tbody id="empMyJobsBody"></tbody>
             </table>
           </div>
@@ -1070,7 +1070,7 @@ footer ul a:hover .fic{color:#60a5fa}
       <div class="panel-card" id="candMyAppsCard" style="margin-top:20px;padding:18px 20px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
           <h3 style="margin:0;font-size:16px" data-i18n="cand_my_apps_t">📋 My Job Applications</h3>
-          <a href="jobs.html" class="btn btn-g" style="padding:6px 12px;font-size:12.5px">Browse Jobs →</a>
+          <a href="jobs.html" class="btn btn-g" style="padding:6px 12px;font-size:12.5px" data-i18n="cand_browse_jobs">Browse Jobs →</a>
         </div>
         <div id="candMyAppsBody" style="font-size:13.5px;color:var(--muted)">No job applications yet.</div>
       </div>
@@ -1202,10 +1202,10 @@ footer ul a:hover .fic{color:#60a5fa}
 
       <!-- Job Applications Tracking Card -->
       <div class="dir-card">
-        <h3>📋 Job Applications (Live)</h3>
+        <h3 data-i18n="dir_apps_live_t">📋 Job Applications (Live)</h3>
         <div class="dir-table-wrap">
           <table class="dir-table">
-            <thead><tr><th>Candidate</th><th>Job</th><th>Location</th><th>Status</th></tr></thead>
+            <thead><tr><th data-i18n="th_cand">Candidate</th><th data-i18n="th_job">Job</th><th data-i18n="th_loc">Location</th><th data-i18n="th_status">Status</th></tr></thead>
             <tbody id="dirJobAppsBody"></tbody>
           </table>
         </div>
@@ -1213,10 +1213,10 @@ footer ul a:hover .fic{color:#60a5fa}
 
       <!-- Registered Employers Approval Card -->
       <div class="dir-card">
-        <h3>🏢 Registered Employers</h3>
+        <h3 data-i18n="dir_emps_t">🏢 Registered Employers</h3>
         <div class="dir-table-wrap">
           <table class="dir-table">
-            <thead><tr><th>Company</th><th>Email</th><th>City</th><th>Status</th><th>Action</th></tr></thead>
+            <thead><tr><th data-i18n="th_comp">Company</th><th data-i18n="th_email">Email</th><th data-i18n="th_city">City</th><th data-i18n="th_status">Status</th><th data-i18n="th_act">Action</th></tr></thead>
             <tbody id="dirEmployersBody"></tbody>
           </table>
         </div>
@@ -1752,6 +1752,7 @@ const I18N={
     dir_mail_save:'Save 2nd RU Email',dir_mail_saved:'✅ 2nd Russian PDF email updated: ',
     dir_search_ph:'Search candidates, @username, job...',dir_empty_list:'No candidate applications yet.',
     dir_select_prompt:'Select a candidate from the list to review & verify their profile and answer their queries.',
+    cand_my_apps_t:'📋 My Job Applications',cand_browse_jobs:'Browse Jobs →',emp_portal_t:'🏢 Employer Portal — Post & Manage Jobs',emp_portal_d:'Sign in or register your company. Once approved by the Director, your jobs publish live to the website & Android app.',emp_logout:'Log Out',emp_comp_l:'Company Name',emp_city_l:'City (Russia)',emp_email_l:'Work Email',emp_pass_l:'Password (min 6 chars)',emp_signin_b:'Employer Sign In',emp_reg_b:'Register Company',emp_jtitle_l:'Job Title',emp_jsal_l:'Monthly Salary',emp_pub_b:'Publish Job Live →',emp_myjobs_th:'My Posted Jobs',emp_sal_th:'Salary',dir_apps_live_t:'📋 Job Applications (Live)',dir_emps_t:'🏢 Registered Employers',th_cand:'Candidate',th_job:'Job',th_loc:'Location',th_status:'Status',th_comp:'Company',th_email:'Email',th_city:'City',th_act:'Action',
     dir_mark_ver:'✅ Mark Verified',dir_mark_pending:'⏳ Mark Pending',
     lbl_verified:'✅ Verified',lbl_locked:'🔒 Locked',lbl_pending:'⏳ Pending Review',lbl_candidate:'Candidate',
     lbl_email:'Email',lbl_phone:'Phone / WhatsApp',lbl_dob:'Date of birth',lbl_passno:'Passport / ID',lbl_country:'Citizenship',lbl_prof:'Profession',
@@ -1908,6 +1909,7 @@ const I18N={
     dir_mail_save:'Сохранить 2-й RU Email',dir_mail_saved:'✅ 2-й email для русских PDF сохранён: ',
     dir_search_ph:'Поиск по имени, @логину, профессии...',dir_empty_list:'Анкет кандидатов пока нет.',
     dir_select_prompt:'Выберите кандидата из списка слева, чтобы проверить его профиль, подтвердить верификацию и ответить на вопросы.',
+    cand_my_apps_t:'📋 Мои отклики на вакансии',cand_browse_jobs:'Смотреть вакансии →',emp_portal_t:'🏢 Кабинет работодателя — Публикация вакансий',emp_portal_d:'Войдите или зарегистрируйте компанию. После одобрения директором ваши вакансии появятся на сайте и в приложении.',emp_logout:'Выйти',emp_comp_l:'Название компании',emp_city_l:'Город (Россия)',emp_email_l:'Рабочий Email',emp_pass_l:'Пароль (мин. 6 символов)',emp_signin_b:'Войти в кабинет',emp_reg_b:'Регистрация компании',emp_jtitle_l:'Название вакансии',emp_jsal_l:'Зарплата в месяц',emp_pub_b:'Опубликовать вакансию →',emp_myjobs_th:'Мои вакансии',emp_sal_th:'Зарплата',dir_apps_live_t:'📋 Отклики на вакансии (Live)',dir_emps_t:'🏢 Зарегистрированные компании',th_cand:'Кандидат',th_job:'Вакансия',th_loc:'Город',th_status:'Статус',th_comp:'Компания',th_email:'Email',th_city:'Город',th_act:'Действие',
     dir_mark_ver:'✅ Подтвердить',dir_mark_pending:'⏳ На проверку',
     lbl_verified:'✅ Проверен',lbl_locked:'🔒 Закрыт',lbl_pending:'⏳ На проверке',lbl_candidate:'Кандидат',
     lbl_email:'Эл. почта',lbl_phone:'Телефон / WhatsApp',lbl_dob:'Дата рождения',lbl_passno:'Паспорт / ID',lbl_country:'Гражданство',lbl_prof:'Профессия',
@@ -3648,7 +3650,7 @@ function renderDirAdmin(){
       <td>${a(ap.jobTitle||"")}</td>
       <td>${a(ap.location||"")}</td>
       <td><select onchange="window.MS_AUTH.dirSetAppStatus('${a(ap.id)}',this.value)" style="padding:5px 8px;border-radius:8px;border:1px solid var(--line);font-size:12.5px">
-        ${["pending","shortlisted","hired","rejected"].map(st=>`<option value="${st}" ${ap.status===st?"selected":""}>${st}</option>`).join("")}
+        ${[["pending","На проверке"],["shortlisted","В шорт-листе"],["hired","Принят"],["rejected","Отклонён"]].map(([st,ru])=>`<option value="${st}" ${ap.status===st?"selected":""}>${x()==="ru"?ru:st}</option>`).join("")}
       </select></td>
     </tr>`).join(""):`<tr><td colspan="4" style="color:var(--muted)">No job applications yet.</td></tr>`;
   }
@@ -3658,8 +3660,8 @@ function renderDirAdmin(){
       <td><strong>${a(em.companyName||"Company")}</strong></td>
       <td>${a(em.email||"")}</td>
       <td>${a(em.city||"")}</td>
-      <td><span style="padding:3px 9px;border-radius:99px;font-size:12px;font-weight:700;background:${em.status==='approved'?'#dcfce7':'#fef3c7'};color:${em.status==='approved'?'#166534':'#92400e'}">${a(em.status||'pending')}</span></td>
-      <td><button type="button" class="btn btn-p" style="padding:5px 10px;font-size:12px" onclick="window.MS_AUTH.dirToggleEmp('${a(em.uid)}','${em.status==='approved'?'pending':'approved'}')">${em.status==='approved'?'Suspend':'Approve'}</button></td>
+      <td><span style="padding:3px 9px;border-radius:99px;font-size:12px;font-weight:700;background:${em.status==='approved'?'#dcfce7':'#fef3c7'};color:${em.status==='approved'?'#166534':'#92400e'}">${x()==="ru"?(em.status==="approved"?"Одобрена":"На проверке"):a(em.status||"pending")}</span></td>
+      <td><button type="button" class="btn btn-p" style="padding:5px 10px;font-size:12px" onclick="window.MS_AUTH.dirToggleEmp('${a(em.uid)}','${em.status==='approved'?'pending':'approved'}')">${x()==="ru"?(em.status==="approved"?"Отключить":"Одобрить"):(em.status==="approved"?"Suspend":"Approve")}</button></td>
     </tr>`).join(""):`<tr><td colspan="5" style="color:var(--muted)">No employers registered yet.</td></tr>`;
   }
 }
