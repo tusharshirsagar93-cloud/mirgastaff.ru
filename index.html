@@ -3661,11 +3661,6 @@ function ruVal(v){
   return RU_VAL_MAP[str] || RU_VAL_MAP[str.toLowerCase()] || str;
 }
 
-function ruVal(v){
-  if(x()!=="ru"||!v) return v;
-  const m={"Moscow":"Москва","Kazan":"Казань","Saint Petersburg":"Санкт-Петербург","Penza":"Пенза","Magnitogorsk":"Магнитогорск","Sochi":"Сочи","Yekaterinburg":"Екатеринбург","Novosibirsk":"Новосибирск","Krasnodar":"Краснодар","Electrician":"Электрик","Warehouse Workers":"Складские работники","Warehouse Worker":"Работник склада","Car Mechanic":"Автомеханик","Plumber":"Водопроводчик","Welder":"Сварщик","Cook":"Повар","Driver":"Водитель","Nurse":"Медсестра / Медбрат","Construction Worker":"Строитель","Mason":"Каменщик","Housekeeper":"Горничная","Mechanic":"Механик","IT Support":"IT-поддержка","Farmer":"Фермер","India":"Индия","Uzbekistan":"Узбекистан","Tajikistan":"Таджикистан","Kyrgyzstan":"Кыргызстан","Bangladesh":"Бангладеш","Pakistan":"Пакистан","Nepal":"Непал","Vietnam":"Вьетнам","Philippines":"Филиппины","Kazakhstan":"Казахстан","Armenia":"Армения","Serbia":"Сербия","Turkey":"Турция","China":"Китай"};
-  return m[v.trim()] || (typeof PROF_RU!=="undefined" && PROF_RU[v.trim()]) || v;
-}
 function renderDirAdmin(){
   const ab=o("dirJobAppsBody");
   if(ab){
