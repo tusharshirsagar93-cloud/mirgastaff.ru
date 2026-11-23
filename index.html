@@ -1909,7 +1909,7 @@ const I18N={
     dir_mail_save:'Сохранить 2-й RU Email',dir_mail_saved:'✅ 2-й email для русских PDF сохранён: ',
     dir_search_ph:'Поиск по имени, @логину, профессии...',dir_empty_list:'Анкет кандидатов пока нет.',
     dir_select_prompt:'Выберите кандидата из списка слева, чтобы проверить его профиль, подтвердить верификацию и ответить на вопросы.',
-    cand_my_apps_t:'📋 Мои отклики на вакансии',cand_browse_jobs:'Смотреть вакансии →',emp_portal_t:'🏢 Кабинет работодателя — Публикация вакансий',emp_portal_d:'Войдите или зарегистрируйте компанию. После одобрения директором ваши вакансии появятся на сайте и в приложении.',emp_logout:'Выйти',emp_comp_l:'Название компании',emp_city_l:'Город (Россия)',emp_email_l:'Рабочий Email',emp_pass_l:'Пароль (мин. 6 символов)',emp_signin_b:'Войти в кабинет',emp_reg_b:'Регистрация компании',emp_jtitle_l:'Название вакансии',emp_jsal_l:'Зарплата в месяц',emp_pub_b:'Опубликовать вакансию →',emp_myjobs_th:'Мои вакансии',emp_sal_th:'Зарплата',dir_apps_live_t:'📋 Отклики на вакансии (Live)',dir_emps_t:'🏢 Зарегистрированные компании',th_cand:'Кандидат',th_job:'Вакансия',th_loc:'Город',th_status:'Статус',th_comp:'Компания',th_email:'Email',th_city:'Город',th_act:'Действие',
+    cand_my_apps_t:'📋 Мои отклики на вакансии',cand_browse_jobs:'Смотреть вакансии →',emp_portal_t:'🏢 Кабинет работодателя — Публикация вакансий',emp_portal_d:'Войдите или зарегистрируйте компанию. После одобрения директором ваши вакансии появятся на сайте и в приложении.',emp_logout:'Выйти',emp_comp_l:'Название компании',emp_city_l:'Город (Россия)',emp_email_l:'Рабочий Email',emp_pass_l:'Пароль (мин. 6 символов)',emp_signin_b:'Войти в кабинет',emp_reg_b:'Регистрация компании',emp_jtitle_l:'Название вакансии',emp_jsal_l:'Зарплата в месяц',emp_pub_b:'Опубликовать вакансию →',emp_myjobs_th:'Мои вакансии',emp_sal_th:'Зарплата',dir_apps_live_t:'📋 Отклики на вакансии (Онлайн)',dir_emps_t:'🏢 Зарегистрированные компании',th_cand:'Кандидат',th_job:'Вакансия',th_loc:'Город',th_status:'Статус',th_comp:'Компания',th_email:'Email',th_city:'Город',th_act:'Действие',
     dir_mark_ver:'✅ Подтвердить',dir_mark_pending:'⏳ На проверку',
     lbl_verified:'✅ Проверен',lbl_locked:'🔒 Закрыт',lbl_pending:'⏳ На проверке',lbl_candidate:'Кандидат',
     lbl_email:'Эл. почта',lbl_phone:'Телефон / WhatsApp',lbl_dob:'Дата рождения',lbl_passno:'Паспорт / ID',lbl_country:'Гражданство',lbl_prof:'Профессия',
@@ -3531,7 +3531,7 @@ import{initializeApp as vt}from"https://www.gstatic.com/firebasejs/11.6.0/fireba
       </tr>`}).join(""),e.querySelectorAll("button[data-del-job]").forEach(i=>{i.addEventListener("click",async()=>{let r=i.dataset.delJob;if(r){i.disabled=!0;try{await xt($(p,"jobs",r)),m(n("dir_job_deleted"))}catch{u("dirJobErr",n("dir_job_err")),i.disabled=!1}}})})}function H(){let e=o("dirCandList"),t=o("dirAppsTitle"),i=o("dirStatsLine"),r=(o("dirSearchInput")?.value||"").trim().toLowerCase();if(t){let s=x()==="ru"?"\u0410\u043D\u043A\u0435\u0442\u044B \u043A\u0430\u043D\u0434\u0438\u0434\u0430\u0442\u043E\u0432":"Candidate Applications";t.textContent=`${s} (${w.length})`}if(i){let s=w.filter(l=>!!l.verified).length;i.textContent=x()==="ru"?`\u041A\u0430\u043D\u0434\u0438\u0434\u0430\u0442\u043E\u0432: ${w.length} \xB7 \u041F\u0440\u043E\u0432\u0435\u0440\u0435\u043D\u043E: ${s} \xB7 \u0412\u0430\u043A\u0430\u043D\u0441\u0438\u0439: ${M.length}`:`Candidates: ${w.length} \xB7 Verified: ${s} \xB7 Live Jobs: ${M.length}`}if(!e)return;let d=w.filter(s=>r?[s.fullName,s.surname,s.firstName,s.username,s.email,s.profession,s.countryName,s.skills].filter(Boolean).join(" ").toLowerCase().includes(r):!0);if(!d.length){e.innerHTML=`<div class="chat-empty">${a(n("dir_empty_list"))}</div>`;return}e.innerHTML=d.map(s=>{let l=s.fullName||`${s.surname||""} ${s.firstName||""}`.trim()||s.email||s.uid;return`<div class="cand-row${s.uid===L?" on":""}" data-cand-uid="${a(s.uid)}">
         <div class="av" style="background:${Lt(s.uid)};overflow:hidden">${s.photoDataUrl?`<img loading="lazy" decoding="async" src="${a(s.photoDataUrl)}" alt="" style="width:100%;height:100%;object-fit:cover;display:block" />`:a(W(l))}</div>
         <div class="ci">
-          <div class="cn">${a(l)}</div>
+          <div class="cn">${a(trName(l))}</div>
           <div class="cs">${a(ruVal(s.profession||"\u2014"))} \xB7 ${a(ruVal(s.countryName||s.countryCode||"\u2014"))}</div>
         </div>
         <span class="cb${s.verified?" ver":""}">${s.verified?"\u2705":"\u23F3"}</span>
@@ -3671,11 +3671,28 @@ function ruVal(v){
   return RU_VAL_MAP[str] || RU_VAL_MAP[str.toLowerCase()] || str;
 }
 
+function trName(v){
+  if(x()!=="ru"||!v) return v;
+  const s=String(v).trim();
+  if(s.includes("@")) return s;
+  const fx={"Worker Candidate":"Кандидат","Candidate":"Кандидат","Company":"Компания","Test Moscow Logistics":"Тест Москва Логистика"};
+  if(fx[s]) return fx[s];
+  const p=[["shch","щ"],["sch","щ"],["zh","ж"],["kh","х"],["ch","ч"],["sh","ш"],["yu","ю"],["ya","я"],["yo","ё"],["ts","ц"],["ai","ай"],["ei","ей"],["ey","ей"],["oy","ой"],["ay","ай"],["iy","ий"],["th","т"],["ph","ф"],["a","а"],["b","б"],["c","к"],["d","д"],["e","е"],["f","ф"],["g","г"],["h","х"],["i","и"],["j","дж"],["k","к"],["l","л"],["m","м"],["n","н"],["o","о"],["p","п"],["q","к"],["r","р"],["s","с"],["t","т"],["u","у"],["v","в"],["w","в"],["x","кс"],["y","й"],["z","з"]];
+  let out="",i=0;
+  while(i<s.length){
+    const ch=s[i],low=s.slice(i).toLowerCase();
+    if(ch<"A"||(ch>"Z"&&ch<"a")||ch>"z"){out+=ch;i++;continue;}
+    let m=false;
+    for(const[k,r] of p){if(low.startsWith(k)){const u=ch>="A"&&ch<="Z";out+=u?r[0].toUpperCase()+r.slice(1):r;i+=k.length;m=true;break;}}
+    if(!m){out+=ch;i++;}
+  }
+  return out;
+}
 function renderDirAdmin(){
   const ab=o("dirJobAppsBody");
   if(ab){
     ab.innerHTML=allApps.length?allApps.map(ap=>`<tr>
-      <td><strong>${a(ap.candidateName||"Candidate")}</strong><div style="font-size:12px;color:var(--muted)">${a(ap.candidateEmail||"")}</div></td>
+      <td><strong>${a(trName(ap.candidateName||"Candidate"))}</strong><div style="font-size:12px;color:var(--muted)">${a(ap.candidateEmail||"")}</div></td>
       <td>${a(ruVal(ap.jobTitle||""))}</td>
       <td>${a(ruVal(ap.location||""))}</td>
       <td><select onchange="window.MS_AUTH.dirSetAppStatus('${a(ap.id)}',this.value)" style="padding:5px 8px;border-radius:8px;border:1px solid var(--line);font-size:12.5px">
@@ -3686,7 +3703,7 @@ function renderDirAdmin(){
   const eb=o("dirEmployersBody");
   if(eb){
     eb.innerHTML=allEmps.length?allEmps.map(em=>`<tr>
-      <td><strong>${a(em.companyName||"Company")}</strong></td>
+      <td><strong>${a(trName(em.companyName||"Company"))}</strong></td>
       <td>${a(em.email||"")}</td>
       <td>${a(ruVal(em.city||""))}</td>
       <td><span style="padding:3px 9px;border-radius:99px;font-size:12px;font-weight:700;background:${em.status==='approved'?'#dcfce7':'#fef3c7'};color:${em.status==='approved'?'#166534':'#92400e'}">${x()==="ru"?(em.status==="approved"?"Одобрена":"На проверке"):a(em.status||"pending")}</span></td>
