@@ -505,7 +505,7 @@
     .hamburger span { width: 17px; }
   }
 </style>
-<link rel="canonical" href="https://mirgastaffru.vercel.app/jobs.html" />
+<link rel="canonical" href="https://www.workmigrapro.com/jobs.html" />
 <meta name="robots" content="index, follow" />
 </head>
 <body>
@@ -569,6 +569,9 @@
     <select id="jobCityFilter" class="tb-select" aria-label="Filter by city">
       <option value="">All cities in Russia</option>
     </select>
+    <label style="display:inline-flex;align-items:center;gap:6px;padding:8px 12px;background:#fff;border:1px solid var(--line);border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap">
+      <input type="checkbox" id="visaOnlyChk" /> <span>🛂 Visa Support</span>
+    </label>
     <div class="jobs-count-badge" id="jobsCountBadge">
       <span class="live-dot" aria-hidden="true"></span>
       <span id="jobsCountText">0 open positions</span>
@@ -842,15 +845,24 @@ function getApplyDestination() {
   }
 }
 
+
+function syncJobSchema(list){
+  let el=document.getElementById('jobPostingSchema');
+  if(!el){el=document.createElement('script');el.type='application/ld+json';el.id='jobPostingSchema';document.head.appendChild(el);}
+  el.textContent=JSON.stringify(list.slice(0,20).map(j=>({"@context":"https://schema.org","@type":"JobPosting","title":j.title||"Worker","description":(j.title||"Vacancy")+" in "+(j.location||"Russia"),"hiringOrganization":{"@type":"Organization","name":"MigraStaff / WorkMigraPro","sameAs":"https://www.workmigrapro.com"},"jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":j.location||"Moscow","addressCountry":"RU"}}})));
+}
+
 function renderJobs() {
   const grid = document.getElementById('jobsGrid');
   const countText = document.getElementById('jobsCountText');
   if (!grid) return;
   const q = String(document.getElementById('jobSearchInput')?.value || '').trim().toLowerCase();
   const cityKey = String(document.getElementById('jobCityFilter')?.value || '').trim().toLowerCase();
+  const visaOnly = !!document.getElementById('visaOnlyChk')?.checked;
 
   const filtered = jobsList.filter(j => {
     if (cityKey && String(j.location || '').trim().toLowerCase() !== cityKey) return false;
+    if (visaOnly && j.visaSponsorship === false) return false;
     if (q) {
       const hay = [j.title, j.titleRu, j.location, j.locationRu, j.salary, j.salaryRu]
         .filter(Boolean)
@@ -861,6 +873,7 @@ function renderJobs() {
     return true;
   });
 
+  syncJobSchema(filtered);
   if (countText) {
     const n = filtered.length;
     const word = n === 1 ? t('open_singular') : t('open_plural');
@@ -1020,6 +1033,7 @@ document.addEventListener('keydown', e => {
 document.getElementById('langSelect').addEventListener('change', e => applyLang(e.target.value));
 document.getElementById('jobSearchInput').addEventListener('input', renderJobs);
 document.getElementById('jobCityFilter').addEventListener('change', renderJobs);
+document.getElementById('visaOnlyChk')?.addEventListener('change', renderJobs);
 
 function bindIndexLinks(root) {
   (root || document).querySelectorAll('a[href^="index.html"]').forEach(a => {
