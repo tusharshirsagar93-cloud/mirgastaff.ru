@@ -75,7 +75,7 @@ footer .container{max-width:100%;padding:0 36px}
 .hamburger span{width:20px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
 .dir-pop{display:none;position:absolute;top:calc(100% + 10px);right:0;min-width:225px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:var(--shadow-lg);z-index:80;flex-direction:column;gap:4px}
 .dir-pop.open{display:flex;animation:fade .16s ease}
-.dir-pop button{width:100%;display:flex;align-items:center;gap:9px;padding:10px 12px;border:none;background:none;border-radius:10px;font-size:14px;font-weight:600;color:var(--ink);text-align:left;cursor:pointer}
+.dir-pop a,.dir-pop button{text-decoration:none;width:100%;display:flex;align-items:center;gap:9px;padding:10px 12px;border:none;background:none;border-radius:10px;font-size:14px;font-weight:600;color:var(--ink);text-align:left;cursor:pointer}.dir-pop a:hover{background:var(--brand-soft);color:var(--brand)}.dir-pop button{width:100%;display:flex;align-items:center;gap:9px;padding:10px 12px;border:none;background:none;border-radius:10px;font-size:14px;font-weight:600;color:var(--ink);text-align:left;cursor:pointer}
 .dir-pop button:hover{background:var(--brand-soft);color:var(--brand)}
 .header-quick{display:none;align-items:center;justify-content:center;gap:20px;min-width:0}
 .header-quick a{font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;white-space:nowrap;transition:color .18s;padding:4px 2px;flex-shrink:0}
@@ -567,6 +567,17 @@ footer ul a:hover .fic{color:#60a5fa}
       <li class="nav-desktop-ext"><a href="jobs.html" data-i18n="nav_jobs">Job Listings</a></li>
       <li class="nav-mobile-only"><button type="button" data-v="profile" class="navbtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span class="nav-prof-lbl" data-i18n="nav_profile_login">Profile Login</span></button></li>
       <li class="nav-mobile-only"><button type="button" data-v="director" class="navbtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="nav-dir-lbl" data-i18n="nav_director_login">Director Login</span></button></li>
+      <li class="nav-mobile-only"><a href="/employers">🏢 Employers & Help</a></li>
+      <li class="nav-mobile-only"><a href="/jobseekers">🧳 Jobseekers & Checklist</a></li>
+      <li class="nav-mobile-only"><a href="/candidates">👥 Candidates (Employers)</a></li>
+      <li class="nav-mobile-only"><a href="/countries">🌍 Countries</a></li>
+      <li class="nav-mobile-only"><a href="/routes">✈️ Hiring Routes</a></li>
+      <li class="nav-mobile-only"><a href="/guides">📘 Visa & Patent Guides</a></li>
+      <li class="nav-mobile-only"><a href="/blog">📰 Blog & Articles</a></li>
+      <li class="nav-mobile-only"><a href="/about">ℹ️ About MigraStaff</a></li>
+      <li class="nav-mobile-only"><a href="/faq">❓ FAQ</a></li>
+      <li class="nav-mobile-only"><a href="/contacts">📍 Contacts & Map</a></li>
+      <li class="nav-mobile-only"><a href="/legal">⚖️ Legal & Privacy</a></li>
     </ul>
     <nav class="header-quick" aria-label="Featured Pages">
       <a href="team.html" data-i18n="nav_team">Our Team</a>
@@ -583,7 +594,18 @@ footer ul a:hover .fic{color:#60a5fa}
       </div>
       <button class="btn btn-g" onclick="go('register')" data-i18n="nav_reg">Register</button>
       <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-      <div class="dir-pop" id="desktopMenuPop" role="menu">
+      <div class="dir-pop" id="desktopMenuPop" role="menu" style="max-height:72vh;overflow-y:auto">
+        <a href="/employers">🏢 Employers & Help</a>
+        <a href="/jobseekers">🧳 Jobseekers & Checklist</a>
+        <a href="/candidates">👥 Candidates (Employers)</a>
+        <a href="/countries">🌍 Countries</a>
+        <a href="/routes">✈️ Hiring Routes</a>
+        <a href="/guides">📘 Visa & Patent Guides</a>
+        <a href="/blog">📰 Blog & Articles</a>
+        <a href="/about">ℹ️ About MigraStaff</a>
+        <a href="/faq">❓ FAQ</a>
+        <a href="/contacts">📍 Contacts & Map</a>
+        <a href="/legal">⚖️ Legal & Privacy</a>
         <button type="button" onclick="go('profile')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span class="nav-prof-lbl" data-i18n="nav_profile_login">Profile Login</span></button>
         <button type="button" onclick="go('director')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="nav-dir-lbl" data-i18n="nav_director_login">Director Login</span></button>
       </div>
