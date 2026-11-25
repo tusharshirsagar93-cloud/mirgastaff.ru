@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Us — WorkMigraPro & MigraStaff</title>
+<meta name="description" content="Meet the directors driving global workforce recruitment and legal compliance at MigraStaff.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --soft: #f8f9fa;
+    --ink: #202124;
+    --ink2: #5f6368;
+    --text: #202124;
+    --muted: #80868b;
+    --line: #dadce0;
+    --brand: #1a73e8;
+    --brand2: #185abc;
+    --brand-soft: #e8f0fe;
+    --accent: #1a73e8;
+    --accent-soft: #e8f0fe;
+    --accent2: #34a853;
+    --border: #dadce0;
+    --shadow-sm: 0 1px 2px rgba(60,64,67,.12), 0 1px 3px rgba(60,64,67,.08);
+    --shadow-md: 0 12px 30px -12px rgba(60,64,67,.22);
+    --shadow-lg: 0 24px 50px -18px rgba(26,115,232,.35);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { overflow-x: clip; max-width: 100%; }
+  .team-grid > *, .fgrid > * { min-width: 0; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+  .container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 24px; }
+  @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes pop { from { opacity: 0; transform: scale(.96) translateY(10px); } to { opacity: 1; transform: none; } }
+
+  /* ---------- UNIFIED HEADER ---------- */
+  header { position: sticky; top: 0; z-index: 50; background: rgba(244,246,249,.95); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); width: 100%; }
+  header .container { max-width: 100%; padding: 0 36px; }
+  footer .container { max-width: 100%; padding: 0 36px; }
+  .nav { display: flex; align-items: center; justify-content: flex-start; height: 72px; gap: 20px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 18px; cursor: pointer; flex-shrink: 0; margin-right: auto; text-decoration: none; }
+  .brand-logo-img, .logo-img { height: 40px; width: auto; object-fit: contain; display: block; flex-shrink: 0; }
+  .logo-text { display: flex; flex-direction: column; justify-content: center; line-height: 1; }
+  .logo-title { font-family: 'Sora', 'Inter', sans-serif; font-weight: 800; font-size: 19px; letter-spacing: .03em; color: #0a1733; line-height: 1.05; white-space: nowrap; }
+  .logo-sub { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 8.2px; letter-spacing: .12em; color: #1b4fa8; text-transform: uppercase; margin-top: 2.5px; line-height: 1; white-space: nowrap; }
+  .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; margin: 0; }
+  .nav-links .nav-mobile-reg, .nav-links .nav-mobile-only { display: none; }
+  .nav-links button, .nav-links a { background: none; border: none; font-size: 14px; font-weight: 500; color: var(--ink2); padding: 6px 2px; position: relative; transition: color .2s; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+  .nav-links button:hover, .nav-links button.on, .nav-links a:hover, .nav-links a.on { color: var(--ink); }
+  .nav-links button.on::after, .nav-links a.on::after { content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 2.5px; background: var(--brand); border-radius: 2px; }
+  .nav-cta { display: flex; align-items: center; gap: 10px; position: relative; flex-shrink: 0; margin-left: 4px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 12px; font-weight: 600; font-size: 15px; border: none; transition: all .25s; text-decoration: none; }
+  .btn-p { background: var(--brand); color: #fff; box-shadow: 0 8px 20px -6px rgba(26,115,232,.45); }
+  .btn-p:hover { background: #1557b0; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .btn-g { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+  .btn-g:hover { border-color: var(--brand); color: var(--brand); }
+  .nav-cta .btn-g { height: 38px; padding: 0 16px; border-radius: 10px; font-size: 13.5px; display: inline-flex; align-items: center; justify-content: center; background: #fff; }
+  .lang-wrap { position: relative; display: inline-flex; align-items: center; flex-shrink: 0; }
+  .lang-globe { position: absolute; left: 10px; width: 15px; height: 15px; color: #1a73e8; pointer-events: none; flex-shrink: 0; }
+  .lang-select { appearance: none; -webkit-appearance: none; height: 38px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center; border: 1.5px solid var(--line); border-radius: 10px; padding: 0 28px 0 30px; font-family: inherit; font-size: 13px; font-weight: 600; color: var(--ink); cursor: pointer; outline: none; transition: .2s; line-height: 1; flex-shrink: 0; }
+  .lang-select:hover, .lang-select:focus { border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-soft); }
+  .hamburger { display: flex; background: none; border: none; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 38px; height: 38px; padding: 0; border-radius: 10px; }
+  .hamburger:hover { background: rgba(15,23,42,.06); }
+  .hamburger span { width: 20px; height: 2px; background: var(--ink); border-radius: 2px; transition: .3s; }
+  .dir-pop { display: none; position: absolute; top: calc(100% + 10px); right: 0; min-width: 225px; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 8px; box-shadow: var(--shadow-lg); z-index: 80; flex-direction: column; gap: 4px; }
+  .dir-pop.open { display: flex; animation: fade .16s ease; }
+  .dir-pop a, .dir-pop button { width: 100%; display: flex; align-items: center; gap: 9px; padding: 10px 12px; border: none; background: none; border-radius: 10px; font-size: 14px; font-weight: 600; color: var(--ink); text-align: left; cursor: pointer; text-decoration: none; }
+  .dir-pop a:hover, .dir-pop button:hover { background: var(--brand-soft); color: var(--brand); }
+  .header-quick { display: none; align-items: center; justify-content: center; gap: 20px; min-width: 0; }
+  .header-quick a { font-size: 14px; font-weight: 500; color: var(--ink2); text-decoration: none; white-space: nowrap; transition: color .18s; padding: 4px 2px; flex-shrink: 0; position: relative; }
+  .header-quick a:hover, .header-quick a.on { color: var(--ink); }
+  .header-quick a.on::after { content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--brand); border-radius: 2px; }
+
+  /* ---------- TEAM CONTENT ---------- */
+  .team-main { flex: 1; display: flex; flex-direction: column; align-items: center; width: 100%; padding-bottom: 32px; }
+  .team-head {
+    margin-top: 56px;
+    text-align: center;
+    max-width: 780px;
+    padding: 0 24px;
+    margin-bottom: 44px;
+  }
+  .team-head h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 14px;
+    text-wrap: balance;
+  }
+  html[lang="ru"] .team-head h1 { font-size: clamp(26px, 3.6vw, 36px); }
+  html[lang="ru"] .card .title, html[lang="ru"] footer h5 { letter-spacing: 0.04em; }
+  .team-head .divider {
+    width: 56px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brand), var(--accent2));
+    border-radius: 2px;
+    margin: 0 auto 18px;
+  }
+  .team-head p {
+    font-size: 1.05rem;
+    color: var(--ink2);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+    max-width: 1100px;
+    padding: 0 36px;
+    width: 100%;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(60,64,67,.10), 0 8px 24px rgba(60,64,67,.08);
+    border: 1px solid var(--border);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 4px 12px rgba(60,64,67,.12), 0 20px 40px rgba(60,64,67,.14);
+  }
+  .card .photo-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #e8eaed;
+  }
+  .card .photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .6s cubic-bezier(.2,.8,.2,1);
+  }
+  .card:hover .photo-wrap img { transform: scale(1.04); }
+  .card .photo-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(32,33,36,.16) 0%, transparent 40%);
+    pointer-events: none;
+  }
+  .card .info {
+    padding: 24px 20px 28px;
+    text-align: center;
+  }
+  .card .name {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--brand);
+    margin-bottom: 6px;
+    letter-spacing: -0.015em;
+  }
+  .card .title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink2);
+  }
+  .back-btn {
+    margin-top: 44px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 26px;
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.94rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .22s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .back-btn:hover {
+    background: var(--brand);
+    color: #fff;
+    border-color: var(--brand);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(26,115,232,.30);
+  }
+  .back-btn svg { width: 16px; height: 16px; transition: transform .22s ease; }
+  .back-btn:hover svg { transform: translateX(-3px); }
+
+  /* ---------- UNIFIED FOOTER & MODAL ---------- */
+  footer { width: 100%; background: #0f172a; color: #e2e8f0; padding: 26px 0 16px; margin-top: auto; border-top: 1px solid rgba(255,255,255,.06); }
+  .fgrid { display: grid; grid-template-columns: minmax(280px, 1.35fr) minmax(200px, 1fr) repeat(3, minmax(130px, .75fr)); gap: 18px 36px; margin-bottom: 16px; align-items: start; }
+  footer .logo { color: #fff; margin-bottom: 6px; gap: 9px; display: inline-flex; }
+  footer .footer-logo-img, footer .logo-img { height: 34px; width: auto; object-fit: contain; display: block; flex-shrink: 0; }
+  footer .logo-title { color: #fff; font-size: 16px; letter-spacing: .035em; }
+  footer .logo-sub { color: #93c5fd; font-size: 7.5px; letter-spacing: .12em; margin-top: 2px; }
+  footer p { font-size: 12px; color: #94a3b8; max-width: 480px; line-height: 1.42; }
+  footer .faddr { margin-top: 5px; font-size: 12px; color: #cbd5e1; line-height: 1.42; max-width: 480px; display: flex; align-items: flex-start; gap: 6px; }
+  footer .faddr b, footer .faddr strong { color: #fff; font-weight: 600; }
+  footer .fic { width: 13px; height: 13px; flex-shrink: 0; color: #60a5fa; margin-top: 2px; }
+  footer h5 { color: #f8fafc; font-size: 10.5px; font-weight: 700; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .08em; }
+  footer ul { list-style: none; display: grid; gap: 3px; }
+  footer ul a { font-size: 12px; color: #94a3b8; transition: .18s; display: inline-flex; align-items: center; gap: 6px; line-height: 1.38; padding: 1px 0; cursor: pointer; text-decoration: none; }
+  footer ul a:hover { color: #fff; }
+  footer ul a .fic { margin-top: 0; color: #64748b; transition: .18s; }
+  footer ul a:hover .fic { color: #60a5fa; }
+  .fbottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 11.5px; color: #64748b; }
+  .fbottom-lang { display: inline-flex; align-items: center; gap: 5px; color: #cbd5e1; font-weight: 600; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 4px 10px; font-size: 11.5px; transition: .18s; }
+  .fbottom-lang:hover { background: rgba(96,165,250,.18); border-color: rgba(96,165,250,.45); color: #fff; }
+
+  .modal-overlay { position: fixed; inset: 0; background: rgba(32,33,36,.6); backdrop-filter: blur(4px); z-index: 100; display: none; align-items: flex-start; justify-content: center; padding: 40px 16px; overflow-y: auto; }
+  .modal-overlay.open { display: flex; animation: fade .25s ease; }
+  .modal { background: #fff; border-radius: 20px; max-width: 620px; width: 100%; overflow: hidden; box-shadow: var(--shadow-lg); animation: pop .3s ease; position: relative; }
+  .modal-close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border-radius: 50%; border: none; font-size: 17px; line-height: 1; display: grid; place-items: center; cursor: pointer; z-index: 2; transition: background .18s, transform .18s; background: #f1f5f9; color: #0f172a; }
+  .modal-close:hover { background: #e2e8f0; transform: scale(1.04); }
+  .info-modal-body { padding: 26px; }
+  .info-modal-body h3 { font-family: 'Sora', sans-serif; font-size: 20px; color: #0f172a; margin-bottom: 10px; padding-right: 34px; }
+  .info-modal-body p, .info-modal-body li { font-size: 14px; color: var(--ink2); line-height: 1.6; }
+  .info-modal-body ul { margin: 10px 0 14px 18px; display: grid; gap: 6px; }
+  .info-modal-foot { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+
+  @media (max-width: 1240px) {
+    header .container, footer .container { padding: 0 20px; }
+    .nav { gap: 14px; }
+    .brand-logo-img, .logo-img { height: 36px; }
+    .logo-title { font-size: 17.5px; }
+    .logo-sub { font-size: 7.4px; }
+    .nav-links { gap: 14px; margin: 0; }
+    .nav-links button, .nav-links a { font-size: 13px; }
+    .nav-cta { gap: 8px; margin-left: 2px; }
+    .nav-cta .btn-g { padding: 0 12px; font-size: 13px; }
+  }
+  @media (max-width: 1120px) {
+    .nav { justify-content: flex-start; gap: 16px; }
+    .header-quick { display: flex; flex: 0 1 auto; justify-content: flex-start; gap: 16px; }
+    .nav-links { position: fixed; top: 72px; left: 0; right: 0; margin: 0; background: #fff; flex-direction: column; gap: 0; padding: 12px 24px; border-bottom: 1px solid var(--line); transform: translateY(-130%); transition: .3s; box-shadow: var(--shadow-md); z-index: 45; }
+    .nav-links.open { transform: translateY(0); }
+    .nav-links .nav-mobile-only { display: block; }
+    .nav-links .nav-desktop-ext { display: none; }
+    .nav-links li { width: 100%; padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .nav-links li:last-child { border-bottom: none; }
+    .nav-links button, .nav-links a { width: 100%; text-align: left; font-size: 16px; }
+    .dir-pop { display: none !important; }
+  }
+  @media (max-width: 1024px) {
+    .fgrid { grid-template-columns: 1.5fr 1.3fr .8fr .8fr .7fr; gap: 10px 12px; }
+  }
+  @media (max-width: 768px) {
+    .fgrid { grid-template-columns: repeat(6, 1fr); gap: 12px 14px; }
+    .fgrid > div:nth-child(1), .fgrid > div:nth-child(2) { grid-column: span 3; }
+    .fgrid > div:nth-child(3), .fgrid > div:nth-child(4), .fgrid > div:nth-child(5) { grid-column: span 2; }
+  }
+  @media (max-width: 680px) {
+    .nav-cta .btn-g { display: none; }
+    .nav-links .nav-mobile-reg { display: block; }
+    .team-head { margin-top: 36px; padding: 0 16px; margin-bottom: 34px; }
+    .team-grid { grid-template-columns: 1fr; gap: 24px; max-width: 432px; padding: 0 16px; }
+  }
+  @media (max-width: 560px) {
+    .container, header .container, footer .container { padding: 0 12px; }
+    .nav { height: 64px; gap: 6px; justify-content: flex-start; }
+    .nav-links { top: 64px; padding: 12px 16px; }
+    .logo { gap: 6px; }
+    .brand-logo-img, .logo-img { height: 30px; width: auto; }
+    .logo-title { font-size: 14px; }
+    .logo-sub { font-size: 5.8px; letter-spacing: .07em; }
+    .header-quick { flex: 0 1 auto; gap: 10px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; padding: 0 2px; }
+    .header-quick::-webkit-scrollbar { display: none; }
+    .header-quick a { font-size: 12px; font-weight: 600; }
+    .nav-cta { gap: 4px; flex-shrink: 0; margin-left: 0; }
+    .lang-globe { left: 7px; width: 13px; height: 13px; }
+    .lang-select { height: 32px; padding: 0 20px 0 24px; font-size: 11.5px; background-position: right 6px center; }
+    .hamburger { width: 32px; height: 32px; }
+    .hamburger span { width: 18px; }
+    footer { padding: 14px 0 10px; }
+    .fgrid { grid-template-columns: repeat(3, 1fr); gap: 10px 10px; margin-bottom: 10px; }
+    .fgrid > div:nth-child(1), .fgrid > div:nth-child(2) { grid-column: 1 / -1; }
+    .fgrid > div:nth-child(2) ul { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+    .fgrid > div:nth-child(3), .fgrid > div:nth-child(4), .fgrid > div:nth-child(5) { grid-column: span 1; }
+    footer ul a, footer p, footer .faddr { font-size: 11px; }
+  }
+  @media (max-width: 400px) {
+    .container, header .container, footer .container { padding: 0 8px; }
+    .logo { gap: 5px; }
+    .brand-logo-img, .logo-img { height: 27px; }
+    .logo-title { font-size: 12.8px; }
+    .logo-sub { font-size: 5.2px; letter-spacing: .04em; }
+    .header-quick { gap: 8px; }
+    .header-quick a { font-size: 11px; }
+    .lang-globe { left: 6px; width: 12px; height: 12px; }
+    .lang-select { height: 30px; padding: 0 18px 0 21px; font-size: 11px; max-width: 96px; }
+    .hamburger { width: 30px; height: 30px; }
+    .hamburger span { width: 17px; }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .card { animation: fadeUp .3s cubic-bezier(.2,.8,.2,1) both; }
+  .card:nth-child(1) { animation-delay: .01s; }
+  .card:nth-child(2) { animation-delay: .02s; }
+  .team-head { animation: fadeUp .3s cubic-bezier(.2,.8,.2,1) both; }
+
+.p-wrap{max-width:1040px;margin:0 auto;padding:28px 20px 48px}
+.p-hero{margin-bottom:24px}
+.p-eye{font-size:11.5px;font-weight:800;letter-spacing:.1em;color:var(--brand);text-transform:uppercase;margin-bottom:6px}
+.p-hero h1{font-family:'Sora',sans-serif;font-size:clamp(26px,4vw,36px);color:var(--ink);margin-bottom:8px}
+.p-hero p{color:var(--ink2);font-size:15px;max-width:720px}
+.p-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:18px}
+.p-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow-sm)}
+.p-card h2,.p-card h3{font-family:'Sora',sans-serif;font-size:17px;margin-bottom:8px;color:var(--ink)}
+.p-card p,.p-card li{font-size:14px;color:var(--ink2);line-height:1.6}
+.p-card ul{padding-left:18px;display:grid;gap:6px;margin-top:8px}
+.p-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.p-btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:10px;font-size:13.5px;font-weight:600;text-decoration:none}
+.p-btn-p{background:var(--brand);color:#fff}
+.p-btn-g{background:#f1f5f9;color:var(--ink);border:1px solid var(--line)}
+.map-frame{width:100%;height:290px;border:0;border-radius:14px;background:#e2e8f0;display:block}
+details.faq-item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px;box-shadow:var(--shadow-sm)}
+details.faq-item summary{font-weight:700;font-size:14.5px;cursor:pointer;color:var(--ink);list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.faq-item p{margin-top:10px;font-size:14px;color:var(--ink2);line-height:1.6}
+.p-inp{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:14px;margin-bottom:10px;font-family:inherit}
+
+</style>
+<link rel="canonical" href="https://mirgastaffru.vercel.app/team.html" />
+<meta name="robots" content="index, follow" />
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo">
+        <img loading="lazy" decoding="async" class="brand-logo-img" src="assets/img_d8886b6eb7.webp" alt="MigraStaff International Recruitment" />
+      <div class="logo-text">
+        <span class="logo-title">MIGRASTAFF</span>
+        <span class="brand-sub logo-sub">INTERNATIONAL RECRUITMENT</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#home" data-i18n="nav_home">Find Workers</a></li>
+      <li><a href="index.html#browse" data-i18n="nav_browse">Browse Talent</a></li>
+      <li class="nav-mobile-reg"><a href="index.html#register" data-i18n="nav_reg">Register</a></li>
+      <li><a href="index.html#employers" data-i18n="nav_emp">For Employers</a></li>
+      <li><a href="index.html#pricing" data-i18n="nav_price">Pricing</a></li>
+      <li class="nav-desktop-ext"><a href="team.html" class="on" data-i18n="nav_team">Our Team</a></li>
+      <li class="nav-desktop-ext"><a href="crypto.html" data-i18n="nav_crypto_hdr">Crypto Pay</a></li>
+      <li class="nav-mobile-only"><a href="index.html#profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span data-i18n="nav_profile_login">Profile Login</span></a></li>
+      <li class="nav-mobile-only"><a href="index.html#director"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span data-i18n="nav_director_login">Director Login</span></a></li>
+    </ul>
+    <nav class="header-quick" aria-label="Featured Pages">
+      <a href="team.html" class="on" data-i18n="nav_team">Our Team</a>
+      <a href="crypto.html" data-i18n="nav_crypto_hdr">Crypto Pay</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang-wrap">
+        <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <select id="langSelect" class="lang-select" aria-label="Language">
+          <option value="en">English</option>
+          <option value="ru">Русский</option>
+        </select>
+      </div>
+      <a href="index.html#register" class="btn btn-g" data-i18n="nav_reg">Register</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div class="dir-pop" id="desktopMenuPop" role="menu">
+        <a href="index.html#profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span data-i18n="nav_profile_login">Profile Login</span></a>
+        <a href="index.html#director"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span data-i18n="nav_director_login">Director Login</span></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="team-main"><div class="p-wrap">
+  <div class="p-hero"><div class="p-eye" data-i18n="a_eye">ABOUT THE PLATFORM</div><h1 data-i18n="a_h1">Migra.Pro &amp; ООО «МИГРАСТАФФ»</h1><p data-i18n="a_sub">Connecting verified international specialists directly with employers in Russia and global markets — without hidden agency markups.</p></div>
+  <div class="p-grid">
+    <div class="p-card">
+      <h2 data-i18n="a_b1_t">Brand &amp; Legal Structure</h2>
+      <p data-i18n="a_b1_d">WorkMigraPro.com (Migra.Pro) is our global digital recruitment platform, operated officially on the ground by ООО «МИГРАСТАФФ» (MigraStaff) in Russia.</p>
+      <ul>
+        <li><b>Company:</b> ООО «МИГРАСТАФФ»</li>
+        <li><b>INN / KPP:</b> 1800020150 / 772345001</li>
+        <li data-i18n-html="ft_addr"><b>Official Address:</b> Moscow, Pererva Street, House 16, Room 16P</li>
+      </ul>
+    </div>
+    <div class="p-card">
+      <h2 data-i18n="a_b2_t">Why Direct Hiring?</h2>
+      <ul>
+        <li data-i18n="a_f1">Direct employer-to-worker communication with auto EN ⇄ RU translation.</li>
+        <li data-i18n="a_f2">Verified worker profiles, work portfolios, and transparent RUB pricing.</li>
+        <li data-i18n="a_f3">Migration &amp; legal clearance support for lawful employment in Russia.</li>
+      </ul>
+      <div class="p-btns">
+        <a href="/team" class="p-btn p-btn-p" data-i18n="a_team">Meet Leadership Team →</a>
+        <a href="/contacts" class="p-btn p-btn-g" data-i18n="a_cnt">View Office &amp; Map</a>
+      </div>
+    </div>
+  </div>
+</div></main>
+
+<!-- ============ FOOTER INFO MODAL ============ -->
+<div class="modal-overlay" id="infoModal" onclick="if(event.target===this)closeInfoModal()">
+  <div class="modal">
+    <button type="button" class="modal-close" onclick="closeInfoModal()" aria-label="Close">✕</button>
+    <div class="info-modal-body" id="infoModalBody"></div>
+  </div>
+</div>
+
+<!-- ============ UNIFIED FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="fgrid">
+      <div>
+        <a href="index.html" class="logo">
+              <img loading="lazy" decoding="async" class="footer-logo-img" src="assets/img_d8886b6eb7.webp" alt="MigraStaff International Recruitment" />
+          <div class="logo-text">
+            <span class="logo-title">MIGRASTAFF</span>
+            <span class="logo-sub">INTERNATIONAL RECRUITMENT</span>
+          </div>
+        </a>
+        <p data-i18n="ft_desc">Migration &amp; Foreign Workforce Legal Clearance Partner</p>
+        <div class="faddr"><svg class="fic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n-html="ft_addr"><b>Official Address:</b> Moscow, Pererva Street, House 16, Room 16P</span></div>
+      </div>
+      <div>
+        <h5 data-i18n="ft_touch">Get In Touch</h5>
+        <ul>
+          <li><a href="mailto:migrapro@imap.mail.ru"><svg class="fic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span>migrapro@imap.mail.ru</span></a></li>
+          <li><a href="tel:+79128500333"><svg class="fic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+7 912 850-03-33</span></a></li>
+          <li><a href="https://wa.me/79128500333" target="_blank" rel="noopener"><svg class="fic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span data-i18n="ft_wa">WhatsApp: +7 912 850-03-33</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-i18n="ft_plat">Platform</h5>
+        <ul>
+          <li><a href="index.html#browse" data-i18n="ft_browse">Browse Workers</a></li>
+          <li><a href="index.html#register" data-i18n="ft_reg">Register as Worker</a></li>
+          <li><a href="index.html#employers" data-i18n="nav_emp">For Employers</a></li>
+          <li><a href="index.html#pricing" data-i18n="nav_price">Pricing</a></li>
+          <li><a href="team.html" data-i18n="nav_team">Our Team</a></li>
+          <li><a href="crypto.html" data-i18n="nav_crypto">Crypto Payments</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-i18n="ft_sup">Support</h5>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="openInfoModal('help')" data-i18n="ft_help">Help Center</a></li>
+          <li><a href="javascript:void(0)" onclick="openInfoModal('verify')" data-i18n="ft_ver">Verification</a></li>
+          <li><a href="javascript:void(0)" onclick="openInfoModal('migration')" data-i18n="ft_mig">Migration Guide</a></li>
+          <li><a href="mailto:migrapro@imap.mail.ru" data-i18n="ft_contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-i18n="ft_legal">Legal</h5>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="openInfoModal('privacy')" data-i18n="ft_priv">Privacy Policy</a></li>
+          <li><a href="javascript:void(0)" onclick="openInfoModal('terms')" data-i18n="ft_terms">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span data-i18n="ft_copy">© 2026 ООО "МИГРАСТАФФ" | INN: 1800020150 | KPP: 772345001 | All Rights Reserved | DESIGN IDEA BY ALBERT GARIPOVA</span>
+      <button type="button" class="fbottom-lang" onclick="applyTeamLang(curLang==='en'?'ru':'en')" aria-label="Switch language">
+        <svg class="fic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span>EN · RU</span>
+      </button>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const TEAM_I18N = {
+    en: {
+      page_title: "About Us \u2014 WorkMigraPro & MigraStaff",
+      a_eye:"ABOUT THE PLATFORM",a_h1:"Migra.Pro & ООО «МИГРАСТАФФ»",a_sub:"Connecting verified international specialists directly with employers in Russia and global markets — without hidden agency markups.",a_b1_t:"Brand & Legal Structure",a_b1_d:"WorkMigraPro.com (Migra.Pro) is our global digital recruitment platform, operated officially on the ground by ООО «МИГРАСТАФФ» (MigraStaff) in Russia.",a_b2_t:"Why Direct Hiring?",a_f1:"Direct employer-to-worker communication with auto EN ⇄ RU translation.",a_f2:"Verified worker profiles, work portfolios, and transparent RUB pricing.",a_f3:"Migration & legal clearance support for lawful employment in Russia.",a_team:"Meet Leadership Team →",a_cnt:"View Office & Map",
+      nav_home: 'Find Workers',
+      nav_browse: 'Browse Talent',
+      nav_reg: 'Register',
+      nav_emp: 'For Employers',
+      nav_price: 'Pricing',
+      nav_team: 'Our Team',
+      nav_crypto: 'Crypto Payments',
+      nav_crypto_hdr: 'Crypto Pay',
+      nav_profile_login: 'Profile Login',
+      nav_director_login: 'Director Login',
+      heading: 'Our Leadership Team',
+      sub: 'Meet the directors driving global workforce recruitment and compliance.',
+      name1: 'Albert Garipova',
+      name2: 'Alexandra Garipova',
+      role1: 'Director & Co-Founder',
+      role2: 'Head of International Operations',
+      back: 'Back to Home',
+      ft_desc: 'Migration & Foreign Workforce Legal Clearance Partner',
+      ft_addr: '<b>Official Address:</b> Moscow, Pererva Street, House 16, Room 16P',
+      ft_touch: 'Get In Touch',
+      ft_wa: 'WhatsApp: +7 912 850-03-33',
+      ft_plat: 'Platform',
+      ft_browse: 'Browse Workers',
+      ft_reg: 'Register as Worker',
+      ft_sup: 'Support',
+      ft_help: 'Help Center',
+      ft_ver: 'Verification',
+      ft_mig: 'Migration Guide',
+      ft_contact: 'Contact Us',
+      ft_legal: 'Legal',
+      ft_priv: 'Privacy Policy',
+      ft_terms: 'Terms of Service',
+      ft_copy: '© 2026 ООО "МИГРАСТАФФ" | INN: 1800020150 | KPP: 772345001 | All Rights Reserved | DESIGN IDEA BY ALBERT GARIPOVA'
+    },
+    ru: {
+      page_title: "О компании — WorkMigraPro и МИГРАСТАФФ",
+      a_eye:"О КОМПАНИИ",a_h1:"Migra.Pro и ООО «МИГРАСТАФФ»",a_sub:"Прямой международный найм проверенных специалистов для работодателей в России — прозрачно и без скрытых комиссий.",a_b1_t:"Бренд и реквизиты",a_b1_d:"WorkMigraPro.com (Migra.Pro) — международная цифровая платформа найма, официальным оператором которой в РФ выступает ООО «МИГРАСТАФФ».",a_b2_t:"Преимущества платформы",a_f1:"Прямое общение работодателя и кандидата с автопереводом EN ⇄ RU.",a_f2:"Проверенные анкеты, портфолио работ и прозрачные тарифы в рублях.",a_f3:"Миграционное и юридическое сопровождение легального трудоустройства в РФ.",a_team:"Наша команда руководства →",a_cnt:"Офис и карта",
+      nav_home: 'Найти работников',
+      nav_browse: 'Каталог талантов',
+      nav_reg: 'Регистрация',
+      nav_emp: 'Работодателям',
+      nav_price: 'Тарифы',
+      nav_team: 'Наша команда',
+      nav_crypto: 'Криптооплата',
+      nav_crypto_hdr: 'Криптооплата',
+      nav_profile_login: 'Вход в профиль',
+      nav_director_login: 'Вход для директора',
+      heading: 'Наша команда руководства',
+      sub: 'Познакомьтесь с руководителями, развивающими международный подбор и правовое сопровождение персонала.',
+      name1: 'Альберт Гарипова',
+      name2: 'Александра Гарипова',
+      role1: 'Директор и сооснователь',
+      role2: 'Руководитель международных операций',
+      back: 'Вернуться на главную',
+      ft_desc: 'Партнёр по миграционному и юридическому оформлению иностранных работников',
+      ft_addr: '<b>Официальный адрес:</b> Москва, ул. Перерва, д. 16, пом. 16П',
+      ft_touch: 'Связаться с нами',
+      ft_wa: 'WhatsApp: +7 912 850-03-33',
+      ft_plat: 'Платформа',
+      ft_browse: 'Найти рабочих',
+      ft_reg: 'Регистрация рабочего',
+      ft_sup: 'Поддержка',
+      ft_help: 'Центр помощи',
+      ft_ver: 'Верификация',
+      ft_mig: 'Миграционный гид',
+      ft_contact: 'Связаться с нами',
+      ft_legal: 'Правовая информация',
+      ft_priv: 'Политика конфиденциальности',
+      ft_terms: 'Условия использования',
+      ft_copy: '© 2026 ООО «МИГРАСТАФФ» | ИНН: 1800020150 | КПП: 772345001 | Все права защищены | ИДЕЯ ДИЗАЙНА: АЛЬБЕРТ ГАРИПОВА'
+    }
+  };
+
+  let curLang = 'en';
+  let activeInfoKey = null;
+  const INFO_PAGES = {
+    help: {
+      en: { t: 'MigraStaff Help Center', b: '<p>Need assistance with worker registration, document verification, employer access, or salary payments? Our multilingual team supports candidates and Russian employers 7 days a week.</p><ul><li><b>Candidates:</b> Register free, lock your private profile, and message the Director directly with automatic EN ⇄ RU translation.</li><li><b>Employers:</b> Filter verified workers by profession and citizenship, unlock contacts, or settle corporate invoices via Crypto Pay.</li><li><b>Support Desk:</b> Email <a href="mailto:migrapro@imap.mail.ru" style="color:var(--brand);font-weight:600">migrapro@imap.mail.ru</a> or WhatsApp <a href="https://wa.me/79128500333" target="_blank" rel="noopener" style="color:var(--brand);font-weight:600">+7 912 850-03-33</a>.</li></ul>' },
+      ru: { t: 'Центр помощи MigraStaff', b: '<p>Нужна помощь с регистрацией работника, проверкой документов, доступом работодателя или расчётами? Наша команда поддерживает кандидатов и работодателей РФ ежедневно.</p><ul><li><b>Кандидатам:</b> Бесплатная регистрация, закрытый профиль и чат с директором с автопереводом EN ⇄ RU.</li><li><b>Работодателям:</b> Поиск проверенных специалистов, открытие контактов и оплата счетов через криптоэквайринг.</li><li><b>Поддержка:</b> Почта <a href="mailto:migrapro@imap.mail.ru" style="color:var(--brand);font-weight:600">migrapro@imap.mail.ru</a> или WhatsApp <a href="https://wa.me/79128500333" target="_blank" rel="noopener" style="color:var(--brand);font-weight:600">+7 912 850-03-33</a>.</li></ul>' }
+    },
+    verify: {
+      en: { t: 'Candidate & Document Verification', b: '<p>MigraStaff applies multi-step screening before awarding a Verified status:</p><ul><li><b>Identity Check:</b> Passport / national ID scan reviewed against registration details.</li><li><b>Work Portfolio:</b> Real job-site photos, trade certificates, and prior experience review.</li><li><b>Employer Clearance:</b> Legal readiness check for Russian work visas, patents, and quota allocation.</li></ul>' },
+      ru: { t: 'Верификация кандидатов и документов', b: '<p>MigraStaff проводит многоэтапную проверку перед присвоением статуса «Проверен»:</p><ul><li><b>Проверка личности:</b> Сверка паспорта / удостоверения с данными анкеты.</li><li><b>Портфолио работ:</b> Фотографии с объектов, сертификаты и подтверждение опыта.</li><li><b>Миграционная готовность:</b> Проверка оснований для визы, патента и квот в РФ.</li></ul>' }
+    },
+    migration: {
+      en: { t: 'Russian Workforce Migration Guide', b: '<p>Key compliance steps supported by ООО «МИГРАСТАФФ» (INN: 1800020150) for international hires entering Russia:</p><ul><li><b>Visa & Work Permit / Patent:</b> Employer invitation letter, work permit quota clearance, and medical insurance (VHI / DMS).</li><li><b>Registration on Arrival:</b> Migration card at border control and address registration within statutory deadlines.</li><li><b>Salary & Currency Benchmark:</b> Salaries are paid in Russian Rubles (RUB) or USD per contract; check live source-country rates in our Currency Exchange System on the home page.</li></ul>' },
+      ru: { t: 'Миграционный гид по трудоустройству в РФ', b: '<p>Основные этапы легального оформления иностранных работников при поддержке ООО «МИГРАСТАФФ» (ИНН: 1800020150):</p><ul><li><b>Виза, разрешение или патент:</b> Приглашение от работодателя, квота и полис ДМС.</li><li><b>Миграционный учёт:</b> Миграционная карта при въезде и постановка на учёт в установленные сроки.</li><li><b>Зарплата и курс валют:</b> Выплата в рублях (RUB) или USD по договору; актуальный курс пересчёта доступен в калькуляторе на главной странице.</li></ul>' }
+    },
+    privacy: {
+      en: { t: 'Privacy Policy', b: '<p>MigraStaff protects candidate and employer personal data under strict access-control rules:</p><ul><li><b>Locked Profiles:</b> Candidate phone numbers, passports, emails, and private messages are hidden from public view and accessible only to the profile owner and authorized MigraStaff Directors.</li><li><b>Data Use:</b> Profile data is processed strictly for legal employment matching and migration clearance.</li><li><b>Requests:</b> To update or remove your profile data, contact <a href="mailto:migrapro@imap.mail.ru" style="color:var(--brand);font-weight:600">migrapro@imap.mail.ru</a>.</li></ul>' },
+      ru: { t: 'Политика конфиденциальности', b: '<p>ООО «МИГРАСТАФФ» обеспечивает защиту персональных данных кандидатов и работодателей в соответствии с требованиями 152-ФЗ:</p><ul><li><b>Закрытые анкеты:</b> Телефоны, паспортные данные, почта и переписка скрыты от посторонних и доступны только владельцу анкеты и уполномоченному директору.</li><li><b>Цели обработки:</b> Подбор персонала и законное миграционное оформление в РФ.</li><li><b>Обращения:</b> Для изменения или удаления данных пишите на <a href="mailto:migrapro@imap.mail.ru" style="color:var(--brand);font-weight:600">migrapro@imap.mail.ru</a>.</li></ul>' }
+    },
+    terms: {
+      en: { t: 'Terms of Service', b: '<p>By using MigraStaff (ООО «МИГРАСТАФФ», INN: 1800020150, KPP: 772345001), you agree to provide accurate identity and qualification information.</p><ul><li><b>Workers:</b> Candidate registration is free. Profile upgrades and crypto settlements are optional.</li><li><b>Employers:</b> Unlocked contact details may only be used for lawful recruitment in Russia.</li><li><b>Exchange Rates:</b> Live benchmark currency rates are informational and updated automatically from online market feeds.</li></ul>' },
+      ru: { t: 'Условия использования', b: '<p>Используя платформу MigraStaff (ООО «МИГРАСТАФФ», ИНН: 1800020150, КПП: 772345001), вы подтверждаете достоверность предоставляемых сведений.</p><ul><li><b>Кандидатам:</b> Регистрация анкеты бесплатна; приоритетное размещение и криптооплата подключаются по желанию.</li><li><b>Работодателям:</b> Открытые контакты используются исключительно для законного найма персонала в РФ.</li><li><b>Курсы валют:</b> Онлайн-курсы в калькуляторе носят информационный рыночный характер и обновляются автоматически.</li></ul>' }
+    }
+  };
+
+  function openInfoModal(key) {
+    const item = INFO_PAGES[key];
+    if (!item) return;
+    activeInfoKey = key;
+    const copy = item[curLang] || item.en;
+    const body = document.getElementById('infoModalBody');
+    if (!body) return;
+    body.innerHTML = `<h3>${copy.t}</h3>${copy.b}<div class="info-modal-foot"><span style="font-size:12px;color:var(--muted)">${curLang === 'ru' ? 'ООО «МИГРАСТАФФ» · Москва' : 'ООО «МИГРАСТАФФ» · Moscow'}</span><a href="https://wa.me/79128500333" target="_blank" rel="noopener" class="btn btn-p" style="padding:9px 16px;font-size:13px">${curLang === 'ru' ? 'Написать в WhatsApp' : 'WhatsApp Support'}</a></div>`;
+    document.getElementById('infoModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeInfoModal() {
+    activeInfoKey = null;
+    const m = document.getElementById('infoModal');
+    if (m) m.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  const desktopMenuPop = document.getElementById('desktopMenuPop');
+  function closeDesktopMenu() {
+    if (desktopMenuPop) desktopMenuPop.classList.remove('open');
+    if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+  }
+  if (hamburger) {
+    hamburger.addEventListener('click', e => {
+      e.stopPropagation();
+      if (window.innerWidth <= 1120) {
+        closeDesktopMenu();
+        const isOpen = navLinks.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      } else {
+        navLinks.classList.remove('open');
+        const isOpen = desktopMenuPop ? desktopMenuPop.classList.toggle('open') : false;
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+    });
+  }
+  document.addEventListener('click', e => {
+    if (desktopMenuPop && desktopMenuPop.classList.contains('open') && !desktopMenuPop.contains(e.target) && (!hamburger || !hamburger.contains(e.target))) {
+      closeDesktopMenu();
+    }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeInfoModal();
+      closeDesktopMenu();
+      if (navLinks) navLinks.classList.remove('open');
+    }
+  });
+
+  const langSel = document.getElementById('langSelect');
+  function applyTeamLang(l) {
+    if (!TEAM_I18N[l]) l = 'en';
+    curLang = l;
+    const dict = TEAM_I18N[l];
+    document.documentElement.lang = l;
+    document.title = dict.page_title;
+    try { localStorage.setItem('migrastaff_lang', l); } catch (e) {}
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (dict[k]) el.textContent = dict[k];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const k = el.getAttribute('data-i18n-html');
+      if (dict[k]) el.innerHTML = dict[k];
+    });
+    const names = document.querySelectorAll('.card .name');
+    if (names[0] && dict.name1) names[0].textContent = dict.name1;
+    if (names[1] && dict.name2) names[1].textContent = dict.name2;
+    const roles = document.querySelectorAll('.card .title');
+    if (roles[0]) roles[0].textContent = dict.role1;
+    if (roles[1]) roles[1].textContent = dict.role2;
+    if (langSel) langSel.value = l;
+    if (activeInfoKey !== null && document.getElementById('infoModal').classList.contains('open')) {
+      openInfoModal(activeInfoKey);
+    }
+  }
+  if (langSel) {
+    langSel.addEventListener('change', e => applyTeamLang(e.target.value));
+  }
+  try {
+    const saved = localStorage.getItem('migrastaff_lang');
+    applyTeamLang(saved && TEAM_I18N[saved] ? saved : 'en');
+  } catch (e) {
+    applyTeamLang('en');
+  }
+
+function bindIndexLinks(root) {
+  (root || document).querySelectorAll('a[href^="index.html"]').forEach(a => {
+    if (a.dataset.idxBound) return;
+    a.dataset.idxBound = '1';
+    a.addEventListener('click', e => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const href = a.getAttribute('href') || 'index.html#home';
+      const hashIdx = href.indexOf('#');
+      const hash = hashIdx >= 0 ? href.slice(hashIdx) : '#home';
+      if (window.location.protocol === 'file:') {
+        if (hashIdx < 0) {
+          e.preventDefault();
+          window.location.href = 'index.html#home';
+        }
+        return;
+      }
+      e.preventDefault();
+      const basePath = window.location.pathname.replace(/(?:team|crypto|jobs)(?:\.html)?\/?$/i, '');
+      const normalizedBase = basePath.endsWith('/') ? basePath : basePath + '/';
+      window.location.href = normalizedBase + hash;
+    });
+  });
+}
+bindIndexLinks(document);
+</script>
+</body>
+</html>
