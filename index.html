@@ -934,6 +934,7 @@ footer ul a:hover .fic{color:#60a5fa}
             <div class="field"><label data-i18n="emp_city_l">City (Russia)</label><input id="empRegCity" type="text" placeholder="e.g. Moscow / Kazan" /></div>
             <div class="field"><label data-i18n="emp_email_l">Work Email</label><input id="empAuthEmail" type="email" placeholder="hr@company.ru" /></div>
           </div>
+          <div class="field" style="max-width:340px;margin-bottom:12px"><label>Account Type / Тип аккаунта</label><select id="empRegType" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);font-size:14px;background:#fff"><option value="employer">🏢 Direct Employer (Прямой работодатель)</option><option value="agency">🤝 Recruiting Agency (Рекрутинговое агентство)</option></select></div>
           <div class="field" style="max-width:340px;margin-bottom:14px"><label data-i18n="emp_pass_l">Password (min 6 chars)</label><input id="empAuthPass" type="password" placeholder="••••••" /></div>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
             <button type="button" id="empSignInBtn" class="btn btn-p" onclick="window.MS_AUTH && window.MS_AUTH.empAuth('signin')" data-i18n="emp_signin_b">Employer Sign In</button>
@@ -942,6 +943,7 @@ footer ul a:hover .fic{color:#60a5fa}
         </div>
         <div id="empDashPanel" style="display:none">
           <div id="empStatusBanner" style="padding:10px 14px;border-radius:10px;font-size:13.5px;font-weight:600;margin-bottom:16px"></div>
+          <div id="empAnalyticsBar" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px"></div>
           <form id="empPostJobForm" style="display:none;margin-bottom:18px" novalidate>
             <div class="dir-job-grid">
               <div class="field"><label data-i18n="emp_jtitle_l">Job Title</label><input id="empJobTitle" type="text" placeholder="e.g. Welder / Driver" required /></div>
@@ -952,9 +954,27 @@ footer ul a:hover .fic{color:#60a5fa}
           </form>
           <div class="dir-table-wrap">
             <table class="dir-table">
-              <thead><tr><th data-i18n="emp_myjobs_th">My Posted Jobs</th><th data-i18n="th_loc">Location</th><th data-i18n="emp_sal_th">Salary</th><th data-i18n="th_act">Action</th></tr></thead>
+              <thead><tr><th data-i18n="emp_myjobs_th">My Posted Jobs</th><th data-i18n="th_loc">Location</th><th data-i18n="emp_sal_th">Salary</th><th>Views</th><th data-i18n="th_act">Action</th></tr></thead>
               <tbody id="empMyJobsBody"></tbody>
             </table>
+          </div>
+          <div style="margin-top:20px;padding:16px;border:1px solid var(--line);border-radius:14px;background:#f8fafc">
+            <h4 style="margin:0 0 8px;font-size:15px">💬 Quick Message Templates (EN / RU)</h4>
+            <p style="font-size:12.5px;color:var(--muted);margin:0 0 12px">1-click copy for WhatsApp, Telegram, or Candidate Chat:</p>
+            <div style="display:grid;gap:8px">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;background:#fff;padding:10px 12px;border-radius:10px;border:1px solid var(--line);flex-wrap:wrap">
+                <span style="font-size:13px"><strong>📅 Interview Invite:</strong> Hello! We reviewed your profile on WorkMigraPro and would like to schedule a quick video interview. / Здравствуйте! Мы рассмотрели ваш профиль и приглашаем на видео-собеседование.</span>
+                <button type="button" class="btn btn-g" style="padding:5px 12px;font-size:12px" onclick="navigator.clipboard?.writeText('Hello! We reviewed your profile on WorkMigraPro and would like to schedule a quick video interview. / Здравствуйте! Мы рассмотрели ваш профиль и приглашаем на видео-собеседование.');this.textContent='Copied ✓';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;background:#fff;padding:10px 12px;border-radius:10px;border:1px solid var(--line);flex-wrap:wrap">
+                <span style="font-size:13px"><strong>📄 Document Check:</strong> Please share your passport validity and work experience photos for visa verification. / Пожалуйста, отправьте срок действия паспорта и фото опыта работы для оформления визы.</span>
+                <button type="button" class="btn btn-g" style="padding:5px 12px;font-size:12px" onclick="navigator.clipboard?.writeText('Please share your passport validity and work experience photos for visa verification. / Пожалуйста, отправьте срок действия паспорта и фото опыта работы для оформления визы.');this.textContent='Copied ✓';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;background:#fff;padding:10px 12px;border-radius:10px;border:1px solid var(--line);flex-wrap:wrap">
+                <span style="font-size:13px"><strong>✅ Job Offer:</strong> Good news! You are shortlisted. Salary &amp; accommodation details are ready — reply to confirm. / Отличные новости! Ваша кандидатура одобрена, условия по зарплате и жилью готовы.</span>
+                <button type="button" class="btn btn-g" style="padding:5px 12px;font-size:12px" onclick="navigator.clipboard?.writeText('Good news! You are shortlisted. Salary & accommodation details are ready — reply to confirm. / Отличные новости! Ваша кандидатура одобрена, условия по зарплате и жилью готовы.');this.textContent='Copied ✓';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1255,6 +1275,18 @@ footer ul a:hover .fic{color:#60a5fa}
           <table class="dir-table">
             <thead><tr><th data-i18n="th_comp">Company</th><th data-i18n="th_email">Email</th><th data-i18n="th_city">City</th><th data-i18n="th_status">Status</th><th data-i18n="th_act">Action</th></tr></thead>
             <tbody id="dirEmployersBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Dedicated Blacklist Card -->
+      <div class="dir-card">
+        <h3>🚫 Blacklist / Чёрный список</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Suspended or banned employers. Click Restore to reactivate access.</p>
+        <div class="dir-table-wrap">
+          <table class="dir-table">
+            <thead><tr><th>Company / Name</th><th>Email &amp; Type</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody id="dirBlacklistBody"></tbody>
           </table>
         </div>
       </div>
@@ -3681,7 +3713,13 @@ function renderEmpPortal(){
   if(form) form.style.display=approved?"block":"none";
   if(tb){
     const mine=M.filter(j=>j.employerUid===empProf.uid);
-    tb.innerHTML=mine.length?mine.map(j=>`<tr><td><strong>${a(j.title)}</strong></td><td>${a(j.location)}</td><td>${a(j.salary)}</td><td><button type="button" class="btn btn-g" style="padding:4px 10px;font-size:12px;color:#dc2626" onclick="window.MS_AUTH.empDelJob('${a(j.id)}')">Delete</button></td></tr>`).join(""):`<tr><td colspan="4" style="color:var(--muted)">No jobs posted yet.</td></tr>`;
+    const totViews=mine.reduce((acc,j)=>acc+(Number(j.views)||0),0);
+    const bar=o("empAnalyticsBar");
+    if(bar){
+      const typeLbl=empProf.accountType==="agency"?"🤝 Recruiting Agency":"🏢 Direct Employer";
+      bar.innerHTML=`<div style="padding:12px;border-radius:12px;background:#eff6ff;border:1px solid #bfdbfe"><div style="font-size:11.5px;color:#1d4ed8;font-weight:700">ACTIVE JOBS</div><div style="font-size:20px;font-weight:800">${mine.length}</div></div><div style="padding:12px;border-radius:12px;background:#ecfdf5;border:1px solid #a7f3d0"><div style="font-size:11.5px;color:#047857;font-weight:700">TOTAL JOB VIEWS</div><div style="font-size:20px;font-weight:800">👁️ ${totViews}</div></div><div style="padding:12px;border-radius:12px;background:#f8fafc;border:1px solid var(--line)"><div style="font-size:11.5px;color:var(--muted);font-weight:700">ACCOUNT TYPE</div><div style="font-size:14px;font-weight:700;margin-top:4px">${typeLbl}</div></div>`;
+    }
+    tb.innerHTML=mine.length?mine.map(j=>`<tr><td><strong>${a(j.title)}</strong></td><td>${a(j.location)}</td><td>${a(j.salary)}</td><td>👁️ ${Number(j.views)||0}</td><td><button type="button" class="btn btn-g" style="padding:4px 10px;font-size:12px;color:#dc2626" onclick="window.MS_AUTH.empDelJob('${a(j.id)}')">Delete</button></td></tr>`).join(""):`<tr><td colspan="5" style="color:var(--muted)">No jobs posted yet.</td></tr>`;
   }
 }
 
@@ -3746,12 +3784,22 @@ function renderDirAdmin(){
   const eb=o("dirEmployersBody");
   if(eb){
     eb.innerHTML=allEmps.length?allEmps.map(em=>`<tr>
-      <td><strong>${a(trName(em.companyName||"Company"))}</strong></td>
+      <td><strong>${a(em.companyName||"Company")}</strong>${em.accountType==='agency'?' <span style="font-size:11px;padding:2px 6px;border-radius:6px;background:#e0f2fe;color:#0369a1;font-weight:700">🤝 Agency</span>':''}</td>
       <td>${a(em.email||"")}</td>
-      <td>${a(ruVal(em.city||""))}</td>
-      <td><span style="padding:3px 9px;border-radius:99px;font-size:12px;font-weight:700;background:${em.status==='approved'?'#dcfce7':'#fef3c7'};color:${em.status==='approved'?'#166534':'#92400e'}">${x()==="ru"?(em.status==="approved"?"Одобрена":"На проверке"):a(em.status||"pending")}</span></td>
-      <td><button type="button" class="btn btn-p" style="padding:5px 10px;font-size:12px" onclick="window.MS_AUTH.dirToggleEmp('${a(em.uid)}','${em.status==='approved'?'pending':'approved'}')">${x()==="ru"?(em.status==="approved"?"Отключить":"Одобрить"):(em.status==="approved"?"Suspend":"Approve")}</button></td>
+      <td>${a(em.city||"")}</td>
+      <td><span style="padding:3px 9px;border-radius:99px;font-size:12px;font-weight:700;background:${em.status==='approved'?'#dcfce7':(em.status==='banned'?'#fee2e2':'#fef3c7')};color:${em.status==='approved'?'#166534':(em.status==='banned'?'#991b1b':'#92400e')}">${a(em.status||'pending')}</span></td>
+      <td style="display:flex;gap:6px;flex-wrap:wrap"><button type="button" class="btn btn-p" style="padding:5px 10px;font-size:12px" onclick="window.MS_AUTH.dirToggleEmp('${a(em.uid)}','${em.status==='approved'?'pending':'approved'}')">${em.status==='approved'?'Suspend':'Approve'}</button><button type="button" class="btn btn-g" style="padding:5px 10px;font-size:12px;color:#dc2626" onclick="window.MS_AUTH.dirToggleEmp('${a(em.uid)}','banned')">Ban</button></td>
     </tr>`).join(""):`<tr><td colspan="5" style="color:var(--muted)">No employers registered yet.</td></tr>`;
+  }
+  const bb=o("dirBlacklistBody");
+  if(bb){
+    const bannedOnly=allEmps.filter(em=>em.status==='banned'||em.status==='suspended');
+    bb.innerHTML=bannedOnly.length?bannedOnly.map(em=>`<tr>
+      <td><strong>${a(em.companyName||"Company")}</strong></td>
+      <td>${a(em.email||"")} · ${em.accountType==='agency'?'Agency':'Employer'}</td>
+      <td><span style="padding:3px 9px;border-radius:99px;font-size:12px;font-weight:700;background:#fee2e2;color:#991b1b">${a(em.status)}</span></td>
+      <td><button type="button" class="btn btn-p" style="padding:5px 10px;font-size:12px" onclick="window.MS_AUTH.dirToggleEmp('${a(em.uid)}','approved')">Restore ✓</button></td>
+    </tr>`).join(""):`<tr><td colspan="4" style="color:var(--muted)">Blacklist is empty (0 banned accounts).</td></tr>`;
   }
 }
 
@@ -3768,7 +3816,7 @@ Object.assign(mt, {
     try{
       const cred = mode==="signup" ? await it(_,em,pw) : await J(_,em,pw);
       if(mode==="signup"){
-        const data={uid:cred.user.uid,companyName:comp,city,email:em,status:"pending",createdAt:E()};
+        const accType=o("empRegType")?.value||"employer"; const data={uid:cred.user.uid,companyName:comp,city,email:em,accountType:accType,status:"pending",createdAt:E()};
         await R($(p,"employers",cred.user.uid),data);
         empProf=data;
       }else{
@@ -3793,7 +3841,7 @@ o("empPostJobForm")?.addEventListener("submit", async ev=>{
   if(!title||!loc||!sal){ u("empPortalErr","Fill job title, location, and salary."); return; }
   try{
     const [tRu,lRu]=await Promise.all([S(title,"ru"),S(loc,"ru")]);
-    await st(k(p,"jobs"),{title,titleRu:tRu||title,location:loc,locationRu:lRu||loc,salary:sal,salaryRu:sal,employerUid:empProf.uid,companyName:empProf.companyName||"Employer",createdBy:empProf.email||empProf.uid,createdAt:E()});
+    await st(k(p,"jobs"),{title,titleRu:tRu||title,location:loc,locationRu:lRu||loc,salary:sal,salaryRu:sal,employerUid:empProf.uid,companyName:empProf.companyName||"Employer",accountType:empProf.accountType||"employer",views:0,createdBy:empProf.email||empProf.uid,createdAt:E()});
     tEl.value=""; lEl.value=""; sEl.value=""; m("Job published live!");
   }catch{ u("empPortalErr","Could not publish job. Check Firestore rules."); }
 });
